@@ -1,0 +1,129 @@
+<div class="contauner">
+  <h1>Hola este es mi primer proyecto</h1>
+  <h2>{{welcome}}</h2>
+  <ul>
+    @for (task of tasks; track task) {
+      <li>
+        {{task}}
+      </li>
+    }
+  </ul>
+  <h2>{{ 'HOla '.repeat(4) }}</h2>
+  <p>La suma es 3 + 3 = {{ 3 +3 }}</p>
+  <p> Hola soy {{ name }} y mi edad es {{ age }}</p>
+  <hr />
+  <img [src]="img" alt="">
+  <input type="text" [value]="name">
+  <button [disabled]="disabled">Click me</button>
+  <hr />
+  <p> Person: {{ persona.name }}</p>
+  <p> Ang: {{ persona.age }}</p>
+  <img [src]="persona.img" alt="">
+
+  <button (click)="clickHandler()">Hanlder</button> <br>
+  <button (dblclick)="clickHandler()">Doble Hanlder</button>
+  <p>{{ name }}</p>
+  <input type="text" [value]="name" (change)="cahngeHandle($event)">
+  <input type="text" [value]="name" (keydown)="keydownHandler($event)">
+  <input type="text" [value]="name" (keydown.shift)="precionsShift()">
+  <p>{{name2()}}</p>
+  <input type="text" [value]="name" (keydown)="keydownSega($event)">
+  <ul>
+    @for (task of tasksSugnal(); track task; let i = $index) {
+      <li>
+        {{i + 1}} {{task}}
+      </li>
+    }
+  </ul>
+  <p>total: {{ tasksSugnal().length}}</p>
+  <input type="number" [value]="persona2().age" (change)="(changeAge($event))">
+  @if (1 !== 1) {
+    <div>
+      My contenido
+    </div>
+  }
+  @if (name === 'Carlos') {
+    <div>
+      Minombre es {{name}}
+    </div>
+  }
+  @if(name === 'Carlos'){
+    <div>
+      Soy Carlos 2 {{name}}
+    </div>
+  }
+  @if (name === 'Carlos' && persona2().age > 17) {
+    <div>
+      SOy carlos y soy mayor de edad
+    </div>
+  } @else {
+    Soy Carlos y soy menor de 18
+  }
+  <h2>If else new</h2>
+  @if(name === 'Carlos'  && persona2().age > 17){
+    <div>
+      Soy {{name}} y soy mayor de edad
+    </div>
+  } @else {
+    <div>Soy {{name}} y soy menor de 18 ----</div>
+  }
+  <h2>for nuevas sintacis</h2>
+  <ul>
+    @for(task of tasksSugnal(); track task; let i =$index ){
+      <li>
+        {{ i + 1 }} {{ task }}
+      </li>
+      } @empty {
+      <li><strong>la lista esta en vacio</strong></li>
+    }
+  </ul>
+  <input type="text" [value]="persona2().name" (change)="(changeName($event))">
+  <div>
+    @switch (persona2().name) {
+      @case ('carlos') {
+        <p>Yo soy carlos</p>
+      }
+      @case ('caspa') {
+        <p>Yo soy caspa</p>
+      }
+      @default {
+        <p>Esta persona no existe</p>
+      }
+    }
+  </div>
+  <hr />
+  <h2>New switch</h2>
+  <div>
+    @switch (persona2().name) {
+      @case ('carlos') {
+        <p>Yo soy carlos</p>
+      }
+      @case ('caspa') {
+        <p>Yo soy caspa</p>
+      }
+      @default {
+        <p>Esta persona no existe</p>
+      }
+    }
+  </div>
+
+
+  <input type="color" [formControl]="colerCtrl">
+  <p>color: {{colerCtrl.value}}</p>
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colerCtrl.value" />
+    </g>
+  </svg>
+  <hr />
+  <input type="number" [formControl]="widthCtrl">
+  <span class="box" [style.width.px]="widthCtrl.value"> </span>
+  <hr />
+  <p>
+    <input type="text" [formControl]="nameCtrl"> <br />
+    <span class="message-error" [class.show]="nameCtrl.invalid && nameCtrl.touched">Nombre invalido</span>
+  </p>
+  <p>
+    <input type="text">
+  </p>
+</div>
